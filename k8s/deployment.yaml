@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-lab
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gitops-lab
+  template:
+    metadata:
+      labels:
+        app: gitops-lab
+    spec:
+      containers:
+        - name: gitops-lab
+          image: ghcr.io/mhmd-aashik/gitops-lab:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 10
