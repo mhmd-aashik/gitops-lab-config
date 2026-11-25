@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: gitops-lab
-          image: ghcr.io/mhmd-aashik/gitops-lab:1abeeee904ae290aacb399cdf314db77784cd8a1
+          image: ghcr.io/mhmd-aashik/gitops-lab:7b4a1fd33bb605c0815b7828fae33abea5eb646c
           ports:
             - containerPort: 3000
           resources:
